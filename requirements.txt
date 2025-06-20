@@ -1,0 +1,7 @@
+transformers
+sumy
+pyttsx3
+gtts
+requests
+streamlit
+python-dotenv
