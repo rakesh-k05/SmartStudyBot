@@ -1,0 +1,12 @@
+[
+  {
+    "question": "What data structure uses FIFO?",
+    "options": ["Stack", "Queue", "Tree", "Graph"],
+    "answer": "Queue"
+  },
+  {
+    "question": "Which of the following is not a linear data structure?",
+    "options": ["Array", "Linked List", "Stack", "Tree"],
+    "answer": "Tree"
+  }
+]
