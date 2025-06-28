@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/imDarshanGK/SmartStudyBot/main/assets/banner.png" alt="SmartStudyBot Banner" width="100%">
+  <img src="https://raw.githubusercontent.com/imDarshanGK/SmartStudyBot/main/assets/banner.png" alt="SmartStudyBot Banner" width="100%" height="300px">
 </p>
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/SmartStudyBot-AI--Powered-blue?style=for-the-badge&logo=python&logoColor=white" alt="SmartStudyBot Logo">
