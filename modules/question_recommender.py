@@ -2,6 +2,21 @@ import json
 import random
 
 def ask_questions(subject):
+    """
+    Displays a multiple-choice quiz to the user based on the given subject.
+
+    The function attempts to load a list of questions from a JSON file located
+    at 'data/questions/{subject}.json'. If the file is found, it selects the
+    first 5 questions after shuffling and presents them one by one to the user.
+    The user inputs their answer, and the function provides feedback and tracks the score.
+
+    Parameters:
+        subject (str): The name of the subject whose questions will be loaded.
+
+    Returns:
+        None
+    """
+    
     try:
         with open(f"data/questions/{subject}.json", "r") as file:
             questions = json.load(file)
