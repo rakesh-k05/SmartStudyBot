@@ -10,6 +10,12 @@
 <h1 align="center">🤖 SmartStudyBot</h1>
 <p align="center">Your AI-powered personalized study companion built using Python, NLP, and speech tools.</p>
 
+<p align="center">
+  <img src="https://img.shields.io/github/contributors/imDarshanGK/SmartStudyBot" alt="GitHub contributors">
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
+</p>
+
+
 ---
 
 ## 🧠 Features
