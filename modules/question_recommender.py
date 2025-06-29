@@ -16,7 +16,7 @@ def ask_questions(subject):
     Returns:
         None
     """
-    
+
     try:
         with open(f"data/questions/{subject}.json", "r") as file:
             questions = json.load(file)

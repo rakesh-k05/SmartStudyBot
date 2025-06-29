@@ -16,7 +16,7 @@ def fetch_resources(topic):
     Returns:
         list[str]: A list of resource URLs related to the topic.
     """
-    
+
     return [
         f"https://www.geeksforgeeks.org/{topic.replace(' ', '-')}",
         f"https://www.youtube.com/results?search_query={topic}+tutorial",

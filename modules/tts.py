@@ -13,7 +13,7 @@ def speak(text):
     Returns:
         None
     """
-        
+
     engine = pyttsx3.init()
     engine.say(text)
     engine.runAndWait()
