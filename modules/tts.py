@@ -1,3 +1,10 @@
+"""
+This module handles text-to-speech functionality using the pyttsx3 library.
+
+It exposes a simple `speak` function that converts input text into audible
+speech, supporting offline TTS without external API dependencies.
+"""
+
 import pyttsx3
 
 def speak(text):
