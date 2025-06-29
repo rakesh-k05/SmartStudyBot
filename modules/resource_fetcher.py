@@ -1,4 +1,6 @@
 """
+resource_fetcher.py
+
 This module provides mock educational resource links based on a given topic.
 
 It generates static URLs pointing to GeeksforGeeks, YouTube, and ChatGPT search
