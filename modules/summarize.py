@@ -7,9 +7,12 @@ extract the most relevant sentences from a given input text.
 Useful for condensing long pieces of text into a few key points.
 """
 
+import logging
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lsa import LsaSummarizer
+
+logger = logging.getLogger(__name__)
 
 def generate_summary(text, sentence_count=3):
     """
@@ -28,7 +31,12 @@ def generate_summary(text, sentence_count=3):
         str: A summarized version of the text with the specified number of sentences.
     """
 
-    parser = PlaintextParser.from_string(text, Tokenizer("english"))
-    summarizer = LsaSummarizer()
-    summary = summarizer(parser.document, sentence_count)
-    return " ".join(str(sentence) for sentence in summary)
+    try:
+        parser = PlaintextParser.from_string(text, Tokenizer("english"))
+        summarizer = LsaSummarizer()
+        summary = summarizer(parser.document, sentence_count)
+        logger.info("✅ Summary generated successfully.")
+        return " ".join(str(sentence) for sentence in summary)
+    except Exception as e:
+        logger.error("❌ Error generating summary: %s", e)
+        return "An error occurred while generating the summary."
