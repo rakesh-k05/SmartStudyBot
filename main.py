@@ -5,31 +5,38 @@ Main entry point for SmartStudyBot application.
 Handles initializing and running the main program loop.
 """
 
+import logging
 from modules import summarize, tts, resource_fetcher, question_recommender
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 def main():
     """
     Main function to start the SmartStudyBot application.
     """
 
-    print("🤖 Welcome to SmartStudyBot!")
-    print("1. Summarize a topic")
-    print("2. Get study resources")
-    print("3. Practice questions")
-    print("4. Hear a response")
+    logging.info("🤖 Welcome to SmartStudyBot!")
+    logging.info("1. Summarize a topic")
+    logging.info("2. Get study resources")
+    logging.info("3. Practice questions")
+    logging.info("4. Hear a response")
+
     choice = input("Choose an option (1-4): ")
 
     if choice == "1":
         topic = input("Enter topic: ")
         summary = summarize.generate_summary(topic)
-        print("\n🔎 Summary:\n", summary)
+        logging.info("\n🔎 Summary:\n%s", summary)
 
     elif choice == "2":
         topic = input("Enter topic: ")
         links = resource_fetcher.fetch_resources(topic)
-        print("\n📚 Study Resources:")
+        logging.info("\n📚 Study Resources:")
         for link in links:
-            print("-", link)
+            logging.info("%s", link)
 
     elif choice == "3":
         subject = input("Enter subject (python/dsa): ").lower()
@@ -40,7 +47,7 @@ def main():
         tts.speak(text)
 
     else:
-        print("Invalid choice. Exiting.")
+        logging.error("❌ Invalid choice. Exiting.")
 
 if __name__ == "__main__":
     main()
