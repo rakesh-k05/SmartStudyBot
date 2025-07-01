@@ -30,7 +30,7 @@ def speak(text):
         engine = pyttsx3.init()
         engine.say(text)
         engine.runAndWait()
-    except (RuntimeError, Exception) as e:
+    except (RuntimeError) as e:
         logger.error("❌ Failed to speak text: %s", e)
         return
 
