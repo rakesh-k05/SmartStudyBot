@@ -62,4 +62,3 @@ def ask_questions(subject):
             logger.warning("⚠️ Invalid input: '%s'. Skipping question.", answer)
 
     logger.info("📊 Quiz finished. Score: %d/5", score)
-

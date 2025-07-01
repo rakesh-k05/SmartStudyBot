@@ -35,8 +35,9 @@ def generate_summary(text, sentence_count=3):
         parser = PlaintextParser.from_string(text, Tokenizer("english"))
         summarizer = LsaSummarizer()
         summary = summarizer(parser.document, sentence_count)
-        logger.info("✅ Summary generated successfully.")
-        return " ".join(str(sentence) for sentence in summary)
-    except Exception as e:
+    except (ValueError, AttributeError, Exception) as e:
         logger.error("❌ Error generating summary: %s", e)
         return "An error occurred while generating the summary."
+
+    logger.info("✅ Summary generated successfully.")
+    return " ".join(str(sentence) for sentence in summary)

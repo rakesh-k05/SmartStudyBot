@@ -39,6 +39,6 @@ def fetch_resources(topic):
         ]
         logger.info("🔗 Resource links generated for topic: %s", topic)
         return links
-    except Exception as e:
-        logger.error("❌ Error fetching resources: %s", e)
+    except (TypeError, AttributeError) as e:
+        logger.error("❌ Failed to generate resource links: %s", e)
         return []
