@@ -1,3 +1,13 @@
+"""
+question_recommender.py
+
+This module handles the interactive quiz functionality of the SmartStudyBot.
+
+It loads multiple-choice questions from a subject-specific JSON file and presents
+them to the user in a shuffled order. The user inputs their answers, and the system
+provides feedback and scoring in real time.
+"""
+
 import json
 import random
 
@@ -6,9 +16,10 @@ def ask_questions(subject):
     Displays a multiple-choice quiz to the user based on the given subject.
 
     The function attempts to load a list of questions from a JSON file located
-    at 'data/questions/{subject}.json'. If the file is found, it selects the
-    first 5 questions after shuffling and presents them one by one to the user.
-    The user inputs their answer, and the function provides feedback and tracks the score.
+    at 'data/questions/{subject}.json' using UTF-8 encoding. If the file is found,
+    it selects the first 5 questions after shuffling and presents them one by one
+    to the user. The user inputs their answer, and the function provides feedback
+    and tracks the score.
 
     Parameters:
         subject (str): The name of the subject whose questions will be loaded.
@@ -16,9 +27,9 @@ def ask_questions(subject):
     Returns:
         None
     """
-    
+
     try:
-        with open(f"data/questions/{subject}.json", "r") as file:
+        with open(f"data/questions/{subject}.json", encoding="utf-8") as file:
             questions = json.load(file)
     except FileNotFoundError:
         print("Subject not found.")

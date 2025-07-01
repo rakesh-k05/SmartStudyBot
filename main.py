@@ -1,6 +1,17 @@
+"""
+main.py
+
+Main entry point for SmartStudyBot application.
+Handles initializing and running the main program loop.
+"""
+
 from modules import summarize, tts, resource_fetcher, question_recommender
 
 def main():
+    """
+    Main function to start the SmartStudyBot application.
+    """
+
     print("🤖 Welcome to SmartStudyBot!")
     print("1. Summarize a topic")
     print("2. Get study resources")
