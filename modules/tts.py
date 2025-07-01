@@ -7,8 +7,8 @@ It exposes a simple `speak` function that converts input text into audible
 speech, supporting offline TTS without external API dependencies.
 """
 
-import pyttsx3
 import logging
+import pyttsx3
 
 logger = logging.getLogger(__name__)
 
