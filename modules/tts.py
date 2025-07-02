@@ -7,7 +7,10 @@ It exposes a simple `speak` function that converts input text into audible
 speech, supporting offline TTS without external API dependencies.
 """
 
+import logging
 import pyttsx3
+
+logger = logging.getLogger(__name__)
 
 def speak(text):
     """
@@ -23,6 +26,12 @@ def speak(text):
         None
     """
 
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
+    try:
+        engine = pyttsx3.init()
+        engine.say(text)
+        engine.runAndWait()
+    except (RuntimeError) as e:
+        logger.error("❌ Failed to speak text: %s", e)
+        return
+
+    logger.info("🗣️ Spoke the given text successfully.")

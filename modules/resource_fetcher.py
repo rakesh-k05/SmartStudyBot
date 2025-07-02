@@ -8,6 +8,10 @@ results. The implementation serves as a placeholder for future enhancements such
 as API integrations or dynamic scraping.
 """
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 def fetch_resources(topic):
     """
     Returns a list of mock resource URLs related to the given topic.
@@ -27,8 +31,14 @@ def fetch_resources(topic):
         list[str]: A list of resource URLs related to the topic.
     """
 
-    return [
-        f"https://www.geeksforgeeks.org/{topic.replace(' ', '-')}",
-        f"https://www.youtube.com/results?search_query={topic}+tutorial",
-        f"https://chat.openai.com/?q={topic}"
-    ]
+    try:
+        links = [
+            f"https://www.geeksforgeeks.org/{topic.replace(' ', '-')}",
+            f"https://www.youtube.com/results?search_query={topic}+tutorial",
+            f"https://chat.openai.com/?q={topic}"
+        ]
+        logger.info("🔗 Resource links generated for topic: %s", topic)
+        return links
+    except (TypeError, AttributeError) as e:
+        logger.error("❌ Failed to generate resource links: %s", e)
+        return []

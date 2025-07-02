@@ -10,6 +10,9 @@ provides feedback and scoring in real time.
 
 import json
 import random
+import logging
+
+logger = logging.getLogger(__name__)
 
 def ask_questions(subject):
     """
@@ -31,22 +34,31 @@ def ask_questions(subject):
     try:
         with open(f"data/questions/{subject}.json", encoding="utf-8") as file:
             questions = json.load(file)
+            logger.info("✅ Loaded questions for subject: %s", subject)
     except FileNotFoundError:
-        print("Subject not found.")
+        logger.error("❌ Subject '%s' not found. Quiz aborted.", subject)
+        return
+    except json.JSONDecodeError as e:
+        logger.error("❌ Failed to parse JSON for subject '%s': %s", subject, e)
         return
 
     random.shuffle(questions)
     score = 0
 
     for q in questions[:5]:
-        print("\n❓", q["question"])
+        logger.info("❓ Question: %s", q["question"])
         for i, option in enumerate(q["options"], 1):
-            print(f"  {i}. {option}")
-        answer = input("Enter your choice (1-4): ")
-        if q["options"][int(answer) - 1] == q["answer"]:
-            print("✅ Correct!")
-            score += 1
-        else:
-            print("❌ Incorrect! Correct answer:", q["answer"])
+            logger.info("   %d. %s", i, option)
 
-    print(f"\n📊 Your Score: {score}/5")
+        answer = input("Enter your choice (1-4): ")
+        try:
+            selected = int(answer)
+            if q["options"][selected - 1] == q["answer"]:
+                logger.info("✅ Correct!")
+                score += 1
+            else:
+                logger.info("❌ Incorrect. Correct answer: %s", q["answer"])
+        except (ValueError, IndexError):
+            logger.warning("⚠️ Invalid input: '%s'. Skipping question.", answer)
+
+    logger.info("📊 Quiz finished. Score: %d/5", score)
