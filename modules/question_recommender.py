@@ -34,11 +34,13 @@ def ask_questions(subject):
         None
     """
 
-    
+    subject = subject.strip().lower()
     # Keep prompting until valid subject is entered
     while subject not in AVAILABLE_SUBJECTS:
-        logger.error("❌ Invalid subject '%s'. Please choose from: %s", subject, ", ".join(AVAILABLE_SUBJECTS))
-        subject = input("Enter a valid subject (python, dsa): ").strip().lower()
+        logger.warning("⚠️  Invalid subject '%s'." \
+        " Please choose from: %s", subject, ", ".join(AVAILABLE_SUBJECTS))
+        subject = input(f"Enter a valid subject ({','
+        ' '.join(AVAILABLE_SUBJECTS)}): ").strip().lower()
         
     try:
         with open(f"data/questions/{subject}.json", encoding="utf-8") as file:
