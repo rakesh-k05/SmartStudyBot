@@ -1,6 +1,10 @@
 import logging
 import os
+import nltk
 from modules import summarize, tts, resource_fetcher, question_recommender, usage_guide
+
+# Ensure that NLTK 'punkt' resource is available
+nltk.download('punkt')
 
 logging.basicConfig(
     level=logging.INFO,
